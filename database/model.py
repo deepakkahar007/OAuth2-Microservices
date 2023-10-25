@@ -1,0 +1,15 @@
+from .db import Base
+from sqlalchemy import Column,Integer,String,Boolean
+from sqlalchemy.sql.sqltypes import TIMESTAMP
+from sqlalchemy.sql.expression import text
+from sqlalchemy.orm import Relationship
+
+class UserModel(Base):
+    __tablename__ = "user"
+
+    id=Column(Integer,primary_key=True,nullable=False)
+    name=Column(Integer,nullable=False)
+    email=Column(String,nullable=False,unique=True)
+    phone_no=Column(String,nullable=True)
+    password=Column(String,nullable=False)
+    created_at=Column(TIMESTAMP(timezone=True),nullable=False,server_default=text('now()'))
