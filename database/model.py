@@ -8,7 +8,7 @@ class UserModel(Base):
     __tablename__ = "user"
 
     id=Column(Integer,primary_key=True,nullable=False)
-    name=Column(Integer,nullable=False)
+    name=Column(String,nullable=False)
     email=Column(String,nullable=False,unique=True)
     phone_no=Column(String,nullable=True)
     password=Column(String,nullable=False)
