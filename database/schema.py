@@ -14,3 +14,13 @@ class Res_User_Schema(UserSchema):
 
     class Config:
         from_attributes=True
+
+class Login(BaseModel):
+    email:EmailStr
+    password:str
+
+class Login_Res(BaseModel):
+    name:str
+    email:str
+    jwt_type:str
+    jwt_token:str
