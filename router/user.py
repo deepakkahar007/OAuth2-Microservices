@@ -1,8 +1,9 @@
 from fastapi import APIRouter,status,HTTPException,Depends,Response
 from sqlalchemy.orm import Session
 from sqlalchemy.sql import exists
-from database import db,model,schema
 from typing import List
+from database import db,model,schema
+from utils import util
 
 router=APIRouter(
     prefix="/user",
@@ -27,6 +28,7 @@ def create_user(body:schema.UserSchema,db:Session=Depends(db.get_db)):
           raise HTTPException(status_code=status.HTTP_403_FORBIDDEN,
                               detail={"msg":"email already exists","inputed_data":body.model_dump()})
         else:
+            body.password=util.hash_password(body.password)
             new_user=model.UserModel(**body.model_dump())
             db.add(new_user)
             db.commit()

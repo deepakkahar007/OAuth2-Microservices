@@ -19,8 +19,7 @@ class Login(BaseModel):
     email:EmailStr
     password:str
 
-class Login_Res(BaseModel):
-    name:str
-    email:str
-    jwt_type:str
+class Token(BaseModel):
+    msg:Optional[str]
     jwt_token:str
+    jwt_type:str

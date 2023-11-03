@@ -8,7 +8,7 @@ class Setting(BaseSettings):
     DB_USERNAME:str="deepak"
     DB_PASSWORD:str="deepak"
     JWT_SECRET:str="SuperSecretPassword"
-    JWT_EXPIRY:str=""
+    JWT_EXPIRY:int=120
     JWT_ALGORITHM:str="HS256"
 
 settings=Setting()
